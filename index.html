@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metis Governance Forum - Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(99, 179, 237, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; top: 60%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; top: 80%; left: 20%; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; top: 30%; left: 70%; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; top: 70%; left: 60%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+
+        .maintenance-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem 2rem;
+            background: rgba(15, 20, 25, 0.9);
+            border-radius: 16px;
+            border: 1px solid rgba(99, 179, 237, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-area {
+            margin-bottom: 2rem;
+        }
+
+        .hyperion-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #63b3ed, #4299e1, #3182ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .forum-subtitle {
+            color: #a0aec0;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .maintenance-icon {
+            width: 80px;
+            height: 80px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, #63b3ed, #4299e1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 179, 237, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(99, 179, 237, 0); }
+        }
+
+        .gear-icon {
+            width: 40px;
+            height: 40px;
+            fill: white;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f7fafc;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #cbd5e0;
+            margin-bottom: 2rem;
+        }
+
+        .estimated-time {
+            background: rgba(99, 179, 237, 0.1);
+            border: 1px solid rgba(99, 179, 237, 0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 1rem;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #f6ad55;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(99, 179, 237, 0.2);
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .contact-info a {
+            color: #63b3ed;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #4299e1;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(99, 179, 237, 0.2);
+            border-radius: 2px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #63b3ed, #4299e1);
+            width: 0%;
+            animation: progress 8s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 0%; }
+        }
+
+        @media (max-width: 768px) {
+            .maintenance-container {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .hyperion-logo {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="maintenance-container">
+        <div class="logo-area">
+            <h1 class="hyperion-logo">Metis</h1>
+            <p class="forum-subtitle">Governance Forum</p>
+        </div>
+
+        <div class="maintenance-icon">
+            <svg class="gear-icon" viewBox="0 0 24 24">
+                <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
+            </svg>
+        </div>
+
+        <h1>We're Enhancing Your Experience</h1>
+        
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>System Maintenance in Progress</span>
+        </div>
+
+        <p class="description">
+            The Metis Governance Forum is currently undergoing scheduled maintenance to improve performance and add new features. Our community space for builders, investors, governance participants, and ecosystem contributors will be back online shortly.
+        </p>
+
+        <div class="estimated-time">
+            <strong>Estimated completion:</strong> We'll be back online shortly
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="contact-info">
+            <p>Need immediate assistance? Reach out to our team:</p>
+            <p><strong>Email:</strong> <a href="mailto:support@ceg.vote">support@ceg.vote</a></p>
+            <p>Thank you for your patience as we enhance our governance platform and community space.</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh every 5 minutes to check if site is back online
+        setTimeout(function() {
+            window.location.reload();
+        }, 300000);
+
+        // Add some interactive particles on mouse move
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.95) {
+                createParticle(e.clientX, e.clientY);
+            }
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'rgba(99, 179, 237, 0.6)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '999';
+            document.body.appendChild(particle);
+
+            // Animate and remove
+            particle.animate([
+                { transform: 'scale(1) translateY(0px)', opacity: 1 },
+                { transform: 'scale(0) translateY(-50px)', opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            }).onfinish = () => particle.remove();
+        }
+    </script>
+</body>
+</html>
